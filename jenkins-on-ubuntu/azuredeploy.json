@@ -37,8 +37,8 @@
       "type": "string",
       "defaultValue": "Standard_DS3",
       "allowedValues": [
-        "Standard_DS3",
-        "Standard_DS4"
+        "Standard_DS3_V2",
+        "Standard_DS4_V2"
       ],
       "metadata": {
         "description": "The size of the virtual machines used when provisioning the Jenkins master node"
@@ -53,10 +53,10 @@
     },
     "slaveVmSize": {
       "type": "string",
-      "defaultValue": "Standard_DS3",
+      "defaultValue": "Standard_DS3_V2",
       "allowedValues": [
-        "Standard_DS3",
-        "Standard_DS4"
+        "Standard_DS3_V2",
+        "Standard_DS4_v2"
       ],
       "metadata": {
         "description": "The size of the virtual machines used when provisioning Jenkins slave node(s)"
