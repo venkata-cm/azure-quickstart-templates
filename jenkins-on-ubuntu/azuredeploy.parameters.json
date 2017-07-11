@@ -18,13 +18,13 @@
       "value": "GEN-UNIQUE-13"
     },
     "masterVmSize": {
-      "value": "Standard_D3"
+      "value": "Standard_DS4"
     },
     "slaveNodes": {
       "value": 1
     },
     "slaveVmSize": {
-      "value": "Standard_D3"
+      "value": "Standard_DS3"
     }
   }
 }
