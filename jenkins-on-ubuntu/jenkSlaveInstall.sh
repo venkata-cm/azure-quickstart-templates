@@ -84,15 +84,13 @@ while getopts :m:s:h optname; do
 done
 
 # Install openjdk-8
-install_java() 
-{ 
+install_java()
+{
     log "Installing openjdk-8"
-    add-apt-repository ppa:webupd8team/java -y 
-    apt-get -y update > /dev/null 
-    apt-get install oracle-java8-set-default > /dev/null 
-    #apt-get -y install openjdk-7-jdk > /dev/null
-    apt-get -y update > /dev/null 
-} 
+    apt-get -y update > /dev/null
+    apt-get -y install openjdk-8-jdk > /dev/null
+    apt-get -y update > /dev/null
+}
 
 download_slave_jar()
 {
