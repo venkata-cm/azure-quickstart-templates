@@ -64,7 +64,7 @@
     }
   },
   "variables": {
-    "templateBaseUrl": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/jenkins-on-ubuntu/",
+    "templateBaseUrl": "https://raw.githubusercontent.com/venkata-cm/azure-quickstart-templates/master/jenkins-on-ubuntu/",
     "sharedTemplateUrl": "[concat(variables('templateBaseUrl'), 'shared-resources.json')]",
     "jenkMasterTemplateUrl": "[concat(variables('templateBaseUrl'), 'jenkmaster-resources.json')]",
     "jenkSlaveTemplateUrl": "[concat(variables('templateBaseUrl'), 'jenkslave-resources.json')]",
@@ -95,8 +95,8 @@
         "version": "latest"
       },
       "scripts": [
-        "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/jenkins-on-ubuntu/jenkMstrInstall.sh",
-        "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/jenkins-on-ubuntu/jenkAddNode.groovy"
+        "https://raw.githubusercontent.com/venkata-cm/azure-quickstart-templates/master/jenkins-on-ubuntu/jenkMstrInstall.sh",
+        "https://raw.githubusercontent.com/venkata-cm/azure-quickstart-templates/master/jenkins-on-ubuntu/jenkAddNode.groovy"
       ]
     },
     "slaveOsSettings": {
@@ -107,7 +107,7 @@
         "version": "latest"
       },
       "scripts": [
-        "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/jenkins-on-ubuntu/jenkSlaveInstall.sh"
+        "https://raw.githubusercontent.com/venkata-cm/azure-quickstart-templates/master/jenkins-on-ubuntu/jenkSlaveInstall.sh"
       ]
     },
     "sharedStorageAccountName": "[parameters('storageAccountPrefix')]"
