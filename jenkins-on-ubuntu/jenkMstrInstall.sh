@@ -80,15 +80,13 @@ done
 log "Begin execution of Jenkins install script on ${HOSTNAME} with ${NODECNT} slave nodes"
 
 
-# Install openjdk-7
-install_java() 
-{ 
+# Install openjdk-8
+install_java()
+{
     log "Installing openjdk-8"
-    add-apt-repository ppa:webupd8team/java -y 
-    apt-get -y update > /dev/null 
-    apt-get install oracle-java8-set-default > /dev/null 
-    #apt-get -y install openjdk-7-jdk > /dev/null
-    apt-get -y update > /dev/null 
+    apt-get -y update > /dev/null
+    apt-get -y install openjdk-8-jdk > /dev/null
+    apt-get -y update > /dev/null
 } 
 
 # Install jenkins master
