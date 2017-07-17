@@ -213,6 +213,27 @@
                 }
               }
             ]
+          },
+          "extensionProfile": {
+            "extensions": [
+              {
+                "name": "lapextension",
+                "properties": {
+                  "publisher": "Microsoft.Azure.Extensions",
+                  "type": "CustomScript",
+                  "typeHandlerVersion": "2.0",
+                  "autoUpgradeMinorVersion": false,
+                  "settings": {
+                    "fileUris": [
+                      "https://raw.githubusercontent.com/civilmaps/infrastructure/dev/azure/resource_templates/201-vmss-ubuntu-autoscale/deploy_dependencies.sh?token=AWPxtDebZcD_d0tbut2yX3JN-3Ydyj3Iks5ZdijwwA%3D%3D"
+                    ]
+                  },
+                  "protectedSettings": {
+                    "commandToExecute": "sudo sh deploy_dependencies.sh"
+                  }
+                }
+              }
+            ]
           }
         }
       }
