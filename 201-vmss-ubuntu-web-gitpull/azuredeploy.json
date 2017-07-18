@@ -54,24 +54,6 @@
       "metadata": {
         "description": "the file name of the script configuring the VMs in the scale set"
       }
-    },
-    "gitSshPrivateKey": {
-      "type": "string",
-      "metadata": {
-        "description": "SSH Private Key to authenticate against the git repo"
-      }
-    },
-    "gitRepoName": {
-      "type": "string",
-      "metadata": {
-        "description": "Repo in form user@repo.gitservice.com"
-      }
-    },
-    "gitUserName": {
-      "type": "string",
-      "metadata": {
-        "description": "Repo in form user@repo.gitservice.com"
-      }
     }
   },
   "variables": {
@@ -96,7 +78,7 @@
     "osType": {
       "publisher": "Canonical",
       "offer": "UbuntuServer",
-      "sku": "14.04.4-LTS",
+      "sku": "16.04.0-LTS",
       "version": "latest"
     },
     "imageReference": "[variables('osType')]"
@@ -312,11 +294,11 @@
                   "autoUpgradeMinorVersion": false,
                   "settings": {
                     "fileUris": [
-                      "[concat(parameters('_artifactsLocation'), '/', parameters('scriptFileName'), parameters('_artifactsLocationSasToken'))]"
+                      "[concat(parameters('_artifactsLocation'), '/', parameters('scriptFileName'))]"
                     ]
                   },
                   "protectedSettings": {
-                    "commandToExecute": "[concat('bash ', parameters('scriptFileName'), ' ', base64(parameters('gitSshPrivateKey')), ' ', parameters('gitRepoName'), ' ', parameters('gitUserName'))]"
+                    "commandToExecute": "[concat('bash ', parameters('scriptFileName'))]"
                   }
                 }
               }
