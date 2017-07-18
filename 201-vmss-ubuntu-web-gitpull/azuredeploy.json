@@ -291,7 +291,7 @@
                     ]
                   },
                   "protectedSettings": {
-                    "commandToExecute": "[concat('bash ', parameters('scriptFileName'))]"
+                    "commandToExecute": "[concat('sudo sh ', parameters('scriptFileName'))]"
                   }
                 }
               }
