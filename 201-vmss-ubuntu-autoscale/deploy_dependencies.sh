@@ -34,7 +34,7 @@ install_java()
 
 
 # Primary Install Tasks
-install_java >> deploy.log
+install_java
 
 exit 0
 
