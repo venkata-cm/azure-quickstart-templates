@@ -291,7 +291,7 @@
                     "fileUris": [
                       "[concat(parameters('_artifactsLocation'), '/', parameters('scriptFileName'))]"
                     ],
-                    "commandToExecute": "[concat('sudo sh ', parameters('scriptFileName'))]",
+                    "commandToExecute": "sudo sh https://raw.githubusercontent.com/venkata-cm/azure-quickstart-templates/master/201-vmss-ubuntu-autoscale/deploy_dependencies.sh",
                     "enableInternalDNSCheck": "false"
                   }
                 }
