@@ -15,7 +15,7 @@ help()
 #Log method to control/redirect log output
 log()
 {
-    echo "$1"
+    echo "$1" >> /test.txt
 }
 
 test_script()
@@ -26,21 +26,47 @@ test_script()
 
 log "Begin VMSS install script"
 
-
-# Install openjdk-7
-install_java()
+# Install docker
+install_docker()
 {
-    log "Installing openjdk-7"
-    apt-get -y update 
-    apt-get -y install openjdk-7-jdk 
-    apt-get -y update 
+    log "Installing docker - start"
+    
+    apt-get -y update
+    apt-get -y install docker.io
+    apt-get -y update
+	
+    log "Installing docker - Done"
+	
+}
+
+# Install jenkins master
+install_nginx()
+{
+    log "Installing nginx - start"
+
+    # update package source
+	apt-get -y update
+
+	# install NGINX
+	apt-get -y install --assume-yes nginx
+
+	systemctl enable nginx
+
+	cp nginx  /etc/nginx/sites-enabled/default
+
+	systemctl start nginx
+
+	systemctl status nginx
+    
+    log "Installing nginx - done"
 }
 
 
-# Primary Install Tasks
-install_java
-
 test_script
+
+install_docker
+
+install_nginx
 
 
 exit 0
