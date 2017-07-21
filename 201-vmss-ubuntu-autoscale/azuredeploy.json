@@ -280,20 +280,17 @@
           "extensionProfile": {
             "extensions": [
               {
-                "name": "customScript",
+                "type": "Microsoft.Compute/virtualMachines/extensions",
+                "name": "[concat(parameters('vmssName'),'-LinuxCustomScriptExtension')]",
                 "properties": {
-                  "publisher": "Microsoft.Compute",
-                  "settings": {
-                    "fileUris": [
-                      "[concat(parameters('_artifactsLocation'), '/', parameters('scriptFileName'))]"
-                    ]
-                  },
-                  "typeHandlerVersion": "1.8",
+                  "publisher": "Microsoft.OSTCExtensions",
+                  "type": "CustomScriptForLinux",
+                  "typeHandlerVersion": "1.3",
                   "autoUpgradeMinorVersion": true,
-                  "protectedSettings": {
-                    "commandToExecute": "[concat('sudo sh ', parameters('scriptFileName'))]"
-                  },
-                  "type": "CustomScriptExtension"
+                  "settings": {
+                    "commandToExecute": "touch /test.txt",
+                    "enableInternalDNSCheck": "false"
+                  }
                 }
               }
             ]
