@@ -289,9 +289,9 @@
                   "autoUpgradeMinorVersion": true,
                   "settings": {
                     "fileUris": [
-                      "[concat(parameters('_artifactsLocation'), '/', parameters('scriptFileName'))]"
+                      "https://raw.githubusercontent.com/venkata-cm/azure-quickstart-templates/master/201-vmss-ubuntu-autoscale/deploy_dependencies.sh"
                     ],
-                    "commandToExecute": "sudo sh https://raw.githubusercontent.com/venkata-cm/azure-quickstart-templates/master/201-vmss-ubuntu-autoscale/deploy_dependencies.sh",
+                    "commandToExecute": "sudo sh deploy_dependencies.sh",
                     "enableInternalDNSCheck": "false"
                   }
                 }
