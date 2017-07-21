@@ -291,7 +291,6 @@
                     "fileUris": [
                       "[concat(parameters('_artifactsLocation'), '/', parameters('scriptFileName'))]"
                     ],
-                    "commandToExecute": "touch /test.txt",
                     "commandToExecute": "[concat('sudo sh ', parameters('scriptFileName'))]",
                     "enableInternalDNSCheck": "false"
                   }
