@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # exit on any error
-set -e
+# set -e
 
 help()
 {
@@ -18,6 +18,10 @@ log()
     echo "$1"
 }
 
+test_script()
+{
+    touch /test.txt
+}
 
 
 log "Begin VMSS install script"
@@ -35,6 +39,9 @@ install_java()
 
 # Primary Install Tasks
 install_java
+
+test_script
+
 
 exit 0
 
