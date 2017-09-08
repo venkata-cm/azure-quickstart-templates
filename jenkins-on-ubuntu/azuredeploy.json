@@ -57,7 +57,8 @@
       "defaultValue": "Standard_DS3_V2",
       "allowedValues": [
         "Standard_DS3_V2",
-        "Standard_DS4_v2"
+        "Standard_DS4_v2",
+        "Standard L4s"
       ],
       "metadata": {
         "description": "The size of the virtual machines used when provisioning Jenkins slave node(s)"
