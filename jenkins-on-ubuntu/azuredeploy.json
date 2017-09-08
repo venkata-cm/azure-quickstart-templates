@@ -35,10 +35,11 @@
     },
     "masterVmSize": {
       "type": "string",
-      "defaultValue": "Standard_DS3",
+      "defaultValue": "Standard L4s",
       "allowedValues": [
         "Standard_DS3_V2",
-        "Standard_DS4_V2"
+        "Standard_DS4_V2",
+        "Standard L4s"
       ],
       "metadata": {
         "description": "The size of the virtual machines used when provisioning the Jenkins master node"
