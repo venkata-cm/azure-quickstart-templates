@@ -1,76 +1,41 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-# exit on any error
-# set -e
+set -e
+set -o pipefail
 
-help()
-{
-
-    echo "This script install Jenkins master on an Ubuntu VM image"
-    echo "Parameters:"
-    echo "-n number of slave nodes to configure on the master"
-    echo "-h view this help content"
-}
-
-#Log method to control/redirect log output
-log()
-{
-    echo "$1" >> /test.txt
-}
-
-test_script()
-{
-    touch /test.txt
-}
+echo "Installing Docker - Start"
+sudo apt-get -y update
+sudo apt-get -y install docker.io
+sudo apt-get -y update
+echo "Installing Docker - Done"
 
 
-log "Begin VMSS install script"
+echo "Adding the logged in user to the docker group : $USER"
+id
+sudo adduser $USER docker
+sudo usermod -aG docker $USER
 
-# Install docker
-install_docker()
-{
-    log "Installing docker - start"
-    
-    apt-get -y update
-    apt-get -y install docker.io
-    apt-get -y update
-	
-    log "Installing docker - Done"
-	
-}
+sudo adduser _azbatch docker
+sudo usermod -aG docker _azbatch
+id
 
-# Install jenkins master
-install_nginx()
-{
-    log "Installing nginx - start"
+# Login to the docker account
+docker login -u traviscm -p lqnk2net
+docker ps
 
-    # update package source
-	apt-get -y update
+echo "deploying fluentd - start"
+wget "https://cminfra.blob.core.windows.net/fluentd/fluentd.conf" --output-document fluentd.conf
+# Pull the fluentd image..
+docker pull civilmapsproduction/cm-log-webservice:fluentd
+# start the fluentd service..
+docker run -d --name fluentd-service -p 24224:24224 -v `pwd`:/fluentd/etc -e FLUENTD_CONF=fluentd.conf civilmapsproduction/cm-log-webservice:fluentd
+docker ps -a
+echo "deploying fluentd - Done"
 
-	# install NGINX
-	apt-get -y install --assume-yes nginx
-
-	systemctl enable nginx
-
-	cp nginx  /etc/nginx/sites-enabled/default
-
-	systemctl start nginx
-
-	systemctl status nginx
-    
-    log "Installing nginx - done"
-}
-
-
-test_script
-
-install_docker
-
-install_nginx
-
-
-exit 0
-
-
-
-
+echo "Mounting the Azure File System (EFS) - Start"
+sudo apt-get -y update
+sudo apt-get -y install cifs-utils
+sudo mkdir /mnt/azure-efs
+sudo chown $USER /mnt/azure-efs
+sudo mount -t cifs //efsonazure.file.core.windows.net/worker-nodes-master /mnt/azure-efs -o vers=3.0,username=efsonazure,password=LBZ3TNxvnBWDJe/JFFRVcjsf1qqus2R1akJH+drAWKJlQqkVUrxAQxRpiUGTQD5HFpS+PwCc0fkdH+qxMqlzjA==,dir_mode=0777,file_mode=0777,sec=ntlmssp
+echo "Mounting the Azure File System (EFS) - Done"
