@@ -61,10 +61,10 @@ mount_efs()
  }
 
 test_script
-install_docker
-add_user_to_docker
-docker_login
-deploy_fluentd
-mount_efs
+#install_docker
+#add_user_to_docker
+#docker_login
+#deploy_fluentd
+#mount_efs
 
 exit 0
